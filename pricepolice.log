@@ -1,0 +1,87 @@
+2022-11-09 11:33:08,268 INFO   Scheduler started
+2022-11-09 11:33:41,049 INFO   Started thread <Thread(Thread-1 (monitor_items), started 6261108736)>
+2022-11-09 11:42:08,940 ERROR   No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.10/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 402, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "/opt/homebrew/lib/python3.10/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 398, in _make_request
+    httplib_response = conn.getresponse()
+  File "/opt/homebrew/Cellar/python@3.10/3.10.8/Frameworks/Python.framework/Versions/3.10/lib/python3.10/http/client.py", line 1374, in getresponse
+    response.begin()
+  File "/opt/homebrew/Cellar/python@3.10/3.10.8/Frameworks/Python.framework/Versions/3.10/lib/python3.10/http/client.py", line 318, in begin
+    version, status, reason = self._read_status()
+  File "/opt/homebrew/Cellar/python@3.10/3.10.8/Frameworks/Python.framework/Versions/3.10/lib/python3.10/http/client.py", line 279, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/opt/homebrew/Cellar/python@3.10/3.10.8/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/opt/homebrew/Cellar/python@3.10/3.10.8/Frameworks/Python.framework/Versions/3.10/lib/python3.10/ssl.py", line 1274, in recv_into
+    return self.read(nbytes, buffer)
+  File "/opt/homebrew/Cellar/python@3.10/3.10.8/Frameworks/Python.framework/Versions/3.10/lib/python3.10/ssl.py", line 1130, in read
+    return self._sslobj.read(len, buffer)
+TimeoutError: The read operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.10/site-packages/telegram/utils/request.py", line 259, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "/opt/homebrew/lib/python3.10/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 68, in request
+    return self.request_encode_body(method, url, fields=fields,
+  File "/opt/homebrew/lib/python3.10/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "/opt/homebrew/lib/python3.10/site-packages/telegram/vendor/ptb_urllib3/urllib3/poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "/opt/homebrew/lib/python3.10/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 665, in urlopen
+    retries = retries.increment(method, url, error=e, _pool=self,
+  File "/opt/homebrew/lib/python3.10/site-packages/telegram/vendor/ptb_urllib3/urllib3/util/retry.py", line 347, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/opt/homebrew/lib/python3.10/site-packages/telegram/vendor/ptb_urllib3/urllib3/packages/six.py", line 686, in reraise
+    raise value
+  File "/opt/homebrew/lib/python3.10/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 614, in urlopen
+    httplib_response = self._make_request(conn, method, url,
+  File "/opt/homebrew/lib/python3.10/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 404, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout,
+  File "/opt/homebrew/lib/python3.10/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 321, in _raise_timeout
+    raise exc_cls(*args)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=5.0)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.10/site-packages/telegram/ext/dispatcher.py", line 557, in process_update
+    handler.handle_update(update, self, check, context)
+  File "/opt/homebrew/lib/python3.10/site-packages/telegram/ext/handler.py", line 199, in handle_update
+    return self.callback(update, context)
+  File "/Users/manya/Desktop/Project/bot.py", line 62, in start
+    update.message.reply_text(greeting)
+  File "/opt/homebrew/lib/python3.10/site-packages/telegram/message.py", line 914, in reply_text
+    return self.bot.send_message(
+  File "/opt/homebrew/lib/python3.10/site-packages/telegram/bot.py", line 133, in decorator
+    result = func(*args, **kwargs)
+  File "/opt/homebrew/lib/python3.10/site-packages/telegram/bot.py", line 525, in send_message
+    return self._message(  # type: ignore[return-value]
+  File "/opt/homebrew/lib/python3.10/site-packages/telegram/ext/extbot.py", line 202, in _message
+    result = super()._message(
+  File "/opt/homebrew/lib/python3.10/site-packages/telegram/bot.py", line 339, in _message
+    result = self._post(endpoint, data, timeout=timeout, api_kwargs=api_kwargs)
+  File "/opt/homebrew/lib/python3.10/site-packages/telegram/bot.py", line 298, in _post
+    return self.request.post(
+  File "/opt/homebrew/lib/python3.10/site-packages/telegram/utils/request.py", line 361, in post
+    result = self._request_wrapper(
+  File "/opt/homebrew/lib/python3.10/site-packages/telegram/utils/request.py", line 261, in _request_wrapper
+    raise TimedOut() from error
+telegram.error.TimedOut: Timed out
+2022-11-09 11:42:26,155 INFO   Started thread <Thread(Thread-2 (monitor_items), started 6277935104)>
+2022-11-09 11:42:48,521 INFO   Recieved arguments: ['https://www.amazon.in/MINISO-Charm-Parfum-Lasting-Perfumes/dp/B08PD2YDYT/?_encoding=UTF8&pd_rd_w=uVzmh&content-id=amzn1.sym.1f592895-6b7a-4b03-9d72-1a40ea8fbeca&pf_rd_p=1f592895-6b7a-4b03-9d72-1a40ea8fbeca&pf_rd_r=WKZ724155XN90XM2Y4N5&pd_rd_wg=qqdxO&pd_rd_r=e257f700-171d-421b-99fe-5012bb693eed&ref_=pd_gw_ci_mcx_mr_hp_atf_m&th=1', '789']
+2022-11-09 11:42:48,530 INFO   New Product: https://www.amazon.in/MINISO-Charm-Parfum-Lasting-Perfumes/dp/B08PD2YDYT/?_encoding=UTF8&pd_rd_w=uVzmh&content-id=amzn1.sym.1f592895-6b7a-4b03-9d72-1a40ea8fbeca&pf_rd_p=1f592895-6b7a-4b03-9d72-1a40ea8fbeca&pf_rd_r=WKZ724155XN90XM2Y4N5&pd_rd_wg=qqdxO&pd_rd_r=e257f700-171d-421b-99fe-5012bb693eed&ref_=pd_gw_ci_mcx_mr_hp_atf_m&th=1 at amazon.in
+2022-11-09 11:44:24,893 INFO   Received signal 2 (SIGINT), stopping...
+2022-11-09 11:44:24,894 INFO   Scheduler has been shut down
+2022-11-09 11:44:25,548 WARNING   Exiting immediately!
+2022-11-09 11:45:47,498 INFO   Scheduler started
+2022-11-09 11:46:03,168 INFO   Started thread <Thread(Thread-1 (monitor_items), started 6227767296)>
+2022-11-09 11:46:08,696 INFO   Recieved arguments: ['', '']
+2022-11-09 11:46:18,057 INFO   Recieved arguments: ['', '']
+2022-11-09 11:47:41,256 INFO   Received signal 2 (SIGINT), stopping...
+2022-11-09 11:47:41,257 INFO   Scheduler has been shut down
+2022-11-09 11:47:41,608 WARNING   Exiting immediately!
